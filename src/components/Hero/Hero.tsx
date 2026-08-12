@@ -5,7 +5,7 @@ interface HeroProps {
 
 function Hero({ name, role }: HeroProps) {
     return (
-        <section>
+        <section className="flex flex-col items-center">
             <p>// Olá</p>
 
             <h1>
