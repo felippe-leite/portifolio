@@ -15,7 +15,7 @@ function ProjectCard({
     <article>
       <h2>{title}</h2>
       <p>{description}</p>
-        
+
       <a href={github}>GitHub</a>
     </article>
   );
