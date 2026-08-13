@@ -1,10 +1,10 @@
 import { projects } from "../../data/projects";
-import ProjectCard from '../ProjectCard/ProjectCard';
+import ProjectCard from "../ProjectCard/ProjectCard";
 
 function Projects() {
   return (
-    <section>
-      <h2>Projetos</h2>
+    <section id="projects" className="flex flex-col gap-6">
+      <h2 className="text-3xl font-bold">Projetos</h2>
       {projects.map((project) => (
         <ProjectCard
           key={project.title}

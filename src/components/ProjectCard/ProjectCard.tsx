@@ -13,8 +13,8 @@ function ProjectCard({
   
 }: ProjectCardProps) {
   return (
-    <article>
-      <h2>{title}</h2>
+    <article className="border rounded-xl p-4">
+      <h3 className="text-xl font-semibold">{title}</h3>
       <p>{description}</p>
 
   <div>

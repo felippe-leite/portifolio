@@ -1,27 +1,21 @@
 interface HeroProps {
-    name: string;
-    role: string;
+  name: string;
+  role: string;
+  description: string;
 }
 
-function Hero({ name, role }: HeroProps) {
-    return (
-        <section className="flex flex-col items-center">
-            <p>// Olá</p>
+function Hero({ name, role, description }: HeroProps) {
+  return (
+    <section className="flex flex-col items-center gap-4 py-20">
+      <p>Olá</p>
 
-            <h1>
-                Olá, eu sou
-                <br />
-                {name}.
-            </h1>
+      <h1 className="text-5xl font-bold">{name}.</h1>
 
-            <h2>{role}</h2>
+      <p className="text-xl font-medium">{role}</p>
 
-            <p>
-                Construindo aplicações robustas, escaláveis e eficientes
-                com Java, Spring Boot e boas práticas de engenharia de software.
-            </p>
-        </section>
-    );
+      <p className="max-w-xl text-center text-lg">{description}</p>
+    </section>
+  );
 }
 
 export default Hero;
