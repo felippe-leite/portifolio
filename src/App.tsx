@@ -2,11 +2,36 @@ import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
+import Technologies from "./components/Technologies/Technologies";
+import Contact from "./components/Contact/Contact";
 
 function App() {
   return (
-    <>
-      <div className="max-w-6xl mx-auto px-4 md:px-8 space-y-20">
+    <main
+      className="
+        min-h-screen
+        bg-[#080808]
+        bg-[radial-gradient(circle,rgba(255,255,255,0.18)_1px,transparent_1px)]
+        bg-[length:16px_16px]
+        p-4
+        text-white
+        md:p-8
+      "
+    >
+      <div
+        className="
+          mx-auto
+          max-w-6xl
+          space-y-20
+          rounded-lg
+          border
+          border-white/20
+          bg-[#0d0d0d]
+          px-4
+          py-8
+          md:px-8
+        "
+      >
         <Navbar />
 
         <Hero
@@ -18,8 +43,12 @@ function App() {
         <About />
 
         <Projects />
+
+        <Technologies />
+
+        <Contact />
       </div>
-    </>
+    </main>
   );
 }
 

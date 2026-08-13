@@ -1,20 +1,31 @@
 function Navbar() {
   return (
-    <nav className="flex justify-between py-6">
-      <h1>Felippe Leite</h1>
+    <nav className="flex items-center justify-between border-b border-white/10 pb-6">
 
-      <ul className="flex gap-6">
+    <a href="#" className="text-sm font-semibold tracking-wide">
+      Felippe Leite
+    </a>
+
+      <ul className="flex gap-6 text-sm text-gray-400">
         <li>
-          <a href="#about">Sobre</a>
+          <a href="#about"
+          className="transition-colors hover:text-cyan-400"
+          >Sobre</a>
         </li>
         <li>
-          <a href="#projects">Projetos</a>
+          <a href="#projects"
+          className="transition-colors hover:text-cyan-400"
+          >Projetos</a>
         </li>
         <li>
-          <a href="#tecnologias">Tecnologias</a>
+          <a href="#technologies"
+          className="transition-colors hover:text-cyan-400"
+          >Tecnologias</a>
         </li>
         <li>
-          <a href="#contato">Contato</a>
+          <a href="#contact"
+          className="transition-colors hover:text-cyan-400"
+          >Contato</a>
         </li>
       </ul>
     </nav>

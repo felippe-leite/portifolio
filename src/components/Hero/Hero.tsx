@@ -6,14 +6,18 @@ interface HeroProps {
 
 function Hero({ name, role, description }: HeroProps) {
   return (
-    <section className="flex flex-col items-center gap-4 py-20">
-      <p>Olá</p>
+    <section className="flex min-h-[60vh] flex-col justify-center gap-6 py-20">
+      <p className="font-mono text-sm uppercase tracking-[0.2em] text-cyan-400">
+        // Olá, eu sou
+      </p>
 
-      <h1 className="text-5xl font-bold">{name}.</h1>
+      <h1 className="text-5xl font-bold tracking-tight md:text-7xl">{name}.</h1>
 
-      <p className="text-xl font-medium">{role}</p>
+      <p className="mt-3 font-mono text-xl text-gray-400 md:text-2xl">{role}</p>
 
-      <p className="max-w-xl text-center text-lg">{description}</p>
+      <p className="max-w-2xl text-lg leading-relaxed text-gray-400">
+        {description}
+      </p>
     </section>
   );
 }
