@@ -3,21 +3,37 @@ export interface Project {
   description: string;
   technologies: string[];
   github: string;
+  image?: string;
+  category?: "BACKEND" | "SIMULATION" | "ASTRONOMY" | "PHYSICS" | "Full Stack";
 }
 
 export const projects: Project[] = [
   {
-    title: "Sistema de Gerenciamento de Tarefas",
+    title: "Orion - Sistema de Transcrição de Áudio e Vídeo",
     description:
-      "Um sistema web para gerenciar tarefas, permitindo aos usuários criar, editar e excluir tarefas, bem como marcar tarefas como concluídas.",
-    technologies: ["Java", "Spring Boot", "React", "MySQL"],
+      "Sistema web para transcrição automatizada de áudio e vídeo, integrado à API da AssemblyAI para processamento do conteúdo e separação de locutores (speaker diarization), com geração automática de documentos PDF e persistência dos dados em MySQL.",
+    technologies: ["TypeScript", "Node.js", "React", "Docker"],
     github: "https://github.com/felippeleite/task-manager",
+    image: "orion.png",
+    category: "Full Stack",
   },
   {
-    title: "API de E-commerce",
+    title: "Eclipse - Sistema de Avaliação e Fluxo de Processos",
     description:
-      "Uma API RESTful para um sistema de e-commerce, permitindo a gestão de produtos, categorias e pedidos.",
-    technologies: ["Java", "Spring Boot", "PostgreSQL"],
+      "Sistema web voltado ao gerenciamento e avaliação de peças processuais, com recursos de assinatura digital e verificação de documentos por QR Code e hash. Atuei no desenvolvimento e manutenção de funcionalidades relacionadas ao fluxo de avaliações, incluindo cálculo de notas, geração e atualização de PDFs, assinatura digital, verificação de autenticidade e correções de regras de negócio no backend e na versão mobile.",
+    technologies: ["TypeScript", "Node.js", "React"],
     github: "https://github.com/felippeleite/ecommerce-api",
+    image: "EclipsePC.png",
+    category: "Full Stack",
+  },
+
+  {
+    title: "Sistema de Gestão Patrimonial (Web)",
+    description:
+      "Sistema web e mobile para gestão patrimonial, permitindo cadastrar, consultar e importar bens, organizar patrimônios por locais e setores, realizar buscas por QR Code e gerar relatórios. A aplicação também conta com gerenciamento de usuários e recursos voltados à administração e acompanhamento dos bens patrimoniais",
+    technologies: ["TypeScript", "Node.js", "Docker"],
+    github: "https://github.com/felippeleite/ecommerce-api",
+    image: "patrimonio.png",
+    category: "Full Stack",
   },
 ];
