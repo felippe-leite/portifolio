@@ -4,6 +4,7 @@ import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
 import Technologies from "./components/Technologies/Technologies";
 import Contact from "./components/Contact/Contact";
+import Experience from "./components/Experience/Experience";
 
 function App() {
   return (
@@ -38,10 +39,13 @@ function App() {
           name="Felippe Leite"
           role="Backend Developer"
           description="Construindo aplicações robustas, escaláveis e eficientes com Java, Spring Boot e boas práticas de engenharia de software."
+          github="https://github.com/felippe-leite"
+          linkedin="https://www.linkedin.com/in/felippeleite27/"
+          resume="/cv.pdf"
         />
 
         <About />
-
+        <Experience />
         <Projects />
 
         <Technologies />
