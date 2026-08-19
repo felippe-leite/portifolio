@@ -2,9 +2,10 @@ interface ProjectCardProps {
   title: string;
   description: string;
   technologies: string[];
-  github: string;
+  github?: string;
   image?: string;
   category?: "BACKEND" | "SIMULATION" | "ASTRONOMY" | "PHYSICS" | "Full Stack";
+  status?: "completed" | "in-progress" | "exploring";
 }
 
 function ProjectCard({
@@ -14,6 +15,7 @@ function ProjectCard({
   github,
   image,
   category,
+  status,
 }: ProjectCardProps) {
   return (
     <article className="flex w-full shrink-0 snap-start flex-col gap-5 rounded-lg border border-white/10 bg-white/[0.02] p-6 transition-colors hover:border-cyan-400/40 md:w-[600px]">
@@ -34,6 +36,14 @@ function ProjectCard({
           </span>
         )}
 
+        {status && (
+          <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-xs text-gray-400">
+            {status === "completed" && "Concluído"}
+            {status === "in-progress" && "Em desenvolvimento"}
+            {status === "exploring" && "Explorando"}
+          </span>
+        )}
+
         <h3 className="text-xl font-semibold">{title}</h3>
 
         <p className="text-gray-400">{description}</p>
@@ -50,14 +60,20 @@ function ProjectCard({
         ))}
       </div>
 
-      <a
-        href={github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-fit font-medium underline underline-offset-4 transition-colors hover:text-cyan-400"
-      >
-        GitHub →
-      </a>
+      {github ? (
+        <a
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-fit font-medium underline underline-offset-4 transition-colors hover:text-cyan-400"
+        >
+          GitHub →
+        </a>
+      ) : (
+        <span className="w-fit font-mono text-xs text-gray-500">
+          Código-fonte privado
+        </span>
+      )}
     </article>
   );
 }

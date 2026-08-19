@@ -60,6 +60,7 @@ function Projects() {
             github={project.github}
             image={project.image}
             category={project.category}
+            status={project.status}
           />
         ))}
       </div>
