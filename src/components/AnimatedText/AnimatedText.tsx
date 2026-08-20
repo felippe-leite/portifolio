@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 const texts = [
-  "FELIPPE LEITE",
   "BACKEND DEVELOPER",
   "JAVA • SPRING BOOT • TYPESCRIPT",
 ];

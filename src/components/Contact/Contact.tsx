@@ -23,6 +23,7 @@ function Contact() {
         onSubmit={(event) => {
           event.preventDefault();
           setSubmitted(true);
+          
         }}
         className="flex max-w-3xl flex-col gap-5"
       >

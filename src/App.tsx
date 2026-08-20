@@ -8,6 +8,7 @@ import Experience from "./components/Experience/Experience";
 import Education from "./components/Education/Education";
 import Certificates from "./components/Certificates/Certificates";
 import Exploring from "./components/Exploring/Exploring";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -52,11 +53,13 @@ function App() {
 
         <Education />
         <Projects />
+  
 
         <Technologies />
         <Exploring />
 
         <Contact />
+        <Footer />
       </div>
     </main>
   );

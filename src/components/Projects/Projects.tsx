@@ -16,10 +16,13 @@ function Projects() {
     const carousel = carouselRef.current;
     const card = carousel?.children[nextIndex] as HTMLElement;
 
-    card?.scrollIntoView({
+    if (!carousel || !card) {
+      return;
+    }
+
+    carousel.scrollTo({
+      left: card.offsetLeft - carousel.offsetLeft,
       behavior: "smooth",
-      block: "nearest",
-      inline: "start",
     });
   };
 
