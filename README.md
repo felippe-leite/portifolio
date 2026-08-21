@@ -36,36 +36,38 @@ A interface foi projetada para ser simples, responsiva e objetiva, priorizando a
 
 ## Estrutura
 
-```text
-src/
-├── components/
-│   ├── About/
-│   ├── AstronomyBackground/
-│   ├── Contact/
-│   ├── Education/
-│   ├── Experience/
-│   ├── Exploring/
-│   ├── Footer/
-│   ├── Hero/
-│   ├── Navbar/
-│   ├── ProjectCard/
-│   ├── Projects/
-│   └── Technologies/
-│
-├── data/
-│   ├── experiences.ts
-│   ├── projects.ts
-│   └── certificates.ts
-│
-├── App.tsx
-├── main.tsx
-└── index.css
+````text
+## Estrutura do projeto
 
-public/
-├── imagens dos projetos
-├── currículo
-└── favicon
-```
+```text
+portifolio/
+├── public/
+│
+├── src/
+│   ├── assets/
+│   │
+│   ├── components/
+│   │   ├── About/
+│   │   ├── AnimatedText/
+│   │   ├── AstronomyBackground/
+│   │   ├── Certificates/
+│   │   ├── Contact/
+│   │   ├── Education/
+│   │   ├── Experience/
+│   │   ├── Exploring/
+│   │   ├── Footer/
+│   │   ├── Hero/
+│   │   ├── Navbar/
+│   │   ├── ProjectCard/
+│   │   ├── Projects/
+│   │   └── Technologies/
+│   │
+│   └── data/
+│
+└── arquivos de configuração do projeto
+````
+
+````
 
 ## 💻 Executando localmente
 
@@ -80,7 +82,7 @@ Clone o repositório:
 
 ```bash
 git clone https://github.com/felippe-leite/portifolio.git
-```
+````
 
 Entre no diretório:
 

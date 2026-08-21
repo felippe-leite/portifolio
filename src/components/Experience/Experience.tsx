@@ -19,9 +19,7 @@ function Experience() {
           >
             <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
               <div>
-                <h3 className="text-xl font-semibold">
-                  {experience.role}
-                </h3>
+                <h3 className="text-xl font-semibold">{experience.role}</h3>
 
                 <p className="font-mono text-sm text-cyan-400">
                   {experience.company}
