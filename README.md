@@ -39,7 +39,6 @@ A interface foi projetada para ser simples, responsiva e objetiva, priorizando a
 ````text
 ## Estrutura do projeto
 
-```text
 portifolio/
 ├── public/
 │
