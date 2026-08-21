@@ -7,7 +7,7 @@ function About() {
         </p>
 
         <h2 className="text-3xl font-bold md:text-4xl">
-          Desenvolvedor focado em Backend.
+          Desenvolvedor focado em Backend
         </h2>
       </div>
       <p className="max-w-3xl text-lg leading-relaxed text-gray-400">

@@ -2,21 +2,13 @@ import AnimatedText from "../AnimatedText/AnimatedText";
 
 interface HeroProps {
   name: string;
-  role: string;
   description: string;
   github: string;
   linkedin: string;
   resume: string;
 }
 
-function Hero({
-  name,
-  role,
-  description,
-  github,
-  linkedin,
-  resume,
-}: HeroProps) {
+function Hero({ name, description, github, linkedin, resume }: HeroProps) {
   return (
     <section className="grid min-h-[60vh] items-center gap-12 py-20 lg:grid-cols-[1.4fr_0.6fr]">
       <div className="flex flex-col justify-center gap-6">
@@ -25,7 +17,7 @@ function Hero({
         </p>
 
         <h1 className="text-5xl font-bold tracking-tight md:text-7xl">
-          {name}.
+          {name}
         </h1>
 
         <AnimatedText />

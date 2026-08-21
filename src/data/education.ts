@@ -8,7 +8,7 @@ export interface Education {
 export const education: Education[] = [
   {
     course: "Análise e Desenvolvimento de Sistemas",
-    institution: "Sua instituição",
+    institution: "Universidade Unicesumar",
     period: "2025 — Atual",
     description:
       "Formação voltada ao desenvolvimento de software, programação, banco de dados e engenharia de sistemas.",

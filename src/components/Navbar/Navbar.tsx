@@ -7,7 +7,7 @@ function Navbar() {
     { label: "Sobre", href: "#about" },
     { label: "Experiência", href: "#experience" },
     { label: "Educação", href: "#education" },
-    { label: "Certificados", href: "#certificates" },
+    // { label: "Certificados", href: "#certificates" },
     { label: "Projetos", href: "#projects" },
     { label: "Tecnologias", href: "#technologies" },
     { label: "Explorando", href: "#exploring" },

@@ -23,3 +23,168 @@ html {
     transform: rotate(360deg);
   }
 }
+/* ================================
+   Astronomy Background
+================================ */
+
+.astronomy-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(255, 255, 255, 0.45) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(255, 255, 255, 0.35) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 90% 70%,
+      rgba(255, 255, 255, 0.3) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 25% 80%,
+      rgba(255, 255, 255, 0.3) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 60% 90%,
+      rgba(255, 255, 255, 0.25) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    220px 220px,
+    280px 280px,
+    340px 340px,
+    260px 260px,
+    320px 320px;
+
+  opacity: 0.7;
+}
+
+/* Órbitas */
+
+.astronomy-orbit {
+  position: absolute;
+  width: 420px;
+  height: 180px;
+  border: 1px solid rgba(34, 211, 238, 0.08);
+  border-radius: 50%;
+  transform: rotate(-25deg);
+}
+
+.astronomy-orbit::before,
+.astronomy-orbit::after {
+  content: "";
+  position: absolute;
+  inset: 35px 45px;
+  border: 1px solid rgba(34, 211, 238, 0.06);
+  border-radius: 50%;
+}
+
+.astronomy-orbit-left {
+  left: -180px;
+  top: 35%;
+}
+
+.astronomy-orbit-right {
+  right: -180px;
+  bottom: 15%;
+  transform: rotate(25deg);
+}
+
+/* Planetas */
+
+.astronomy-planet {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #67e8f9;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.35);
+}
+
+.astronomy-planet-left {
+  top: 12px;
+  left: 70px;
+}
+
+.astronomy-planet-right {
+  right: 80px;
+  bottom: 12px;
+}
+
+/* Estrelas */
+
+.astronomy-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.star-1 {
+  top: 18%;
+  left: 8%;
+}
+
+.star-2 {
+  top: 30%;
+  right: 7%;
+}
+
+.star-3 {
+  top: 65%;
+  left: 5%;
+}
+
+.star-4 {
+  bottom: 18%;
+  right: 10%;
+}
+
+.star-5 {
+  bottom: 8%;
+  left: 14%;
+}
+
+/* Animação sutil das estrelas */
+
+@keyframes starPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+.astronomy-star {
+  animation: starPulse 4s ease-in-out infinite;
+}
+
+.star-2 {
+  animation-delay: 1s;
+}
+
+.star-3 {
+  animation-delay: 2s;
+}
+
+.star-4 {
+  animation-delay: 0.5s;
+}
+
+.star-5 {
+  animation-delay: 1.5s;
+}

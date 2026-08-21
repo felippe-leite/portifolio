@@ -2,9 +2,6 @@ const topics = [
   "Arquitetura de Software",
   "Cyber Security",
   "Sistemas Distribuídos",
-  "Computação",
-  "Astronomia",
-  "Física",
 ];
 
 function Exploring() {
@@ -20,14 +17,32 @@ function Exploring() {
         </h2>
       </div>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
         {topics.map((topic) => (
-          <span
+          <div
             key={topic}
-            className="rounded-full border border-white/10 bg-white/[0.02] px-4 py-2 font-mono text-sm text-gray-300 transition-colors hover:border-cyan-400/30 hover:text-cyan-400"
+            className="
+              group
+              rounded-lg
+              border border-white/10
+              bg-white/[0.02]
+              px-5 py-4
+              transition-all duration-300
+              hover:-translate-y-1
+              hover:border-cyan-400/40
+              hover:bg-white/[0.04]
+            "
           >
-            {topic}
-          </span>
+            <span
+              className="
+                font-mono text-sm text-gray-400
+                transition-colors duration-300
+                group-hover:text-cyan-400
+              "
+            >
+              {topic}
+            </span>
+          </div>
         ))}
       </div>
     </section>

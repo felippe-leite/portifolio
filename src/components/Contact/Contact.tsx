@@ -1,7 +1,41 @@
 import { useState } from "react";
 
 function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setStatus("sending");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error("Falha ao enviar formulário");
+      }
+
+      setStatus("success");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
+  };
 
   return (
     <section id="contact" className="flex flex-col gap-8">
@@ -10,29 +44,17 @@ function Contact() {
           // Contato
         </p>
 
-        <h2 className="mt-2 text-3xl font-bold">
-          Vamos conversar
-        </h2>
+        <h2 className="mt-2 text-3xl font-bold">Vamos conversar</h2>
 
         <p className="mt-3 max-w-2xl leading-relaxed text-gray-400">
           Tem uma ideia, projeto ou oportunidade? Entre em contato.
         </p>
       </div>
 
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          setSubmitted(true);
-          
-        }}
-        className="flex max-w-3xl flex-col gap-5"
-      >
+      <form onSubmit={handleSubmit} className="flex max-w-3xl flex-col gap-5">
         <div className="grid gap-5 md:grid-cols-2">
           <div className="flex flex-col gap-2">
-            <label
-              htmlFor="name"
-              className="text-sm text-gray-300"
-            >
+            <label htmlFor="name" className="text-sm text-gray-300">
               Nome
             </label>
 
@@ -54,10 +76,7 @@ function Contact() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label
-              htmlFor="email"
-              className="text-sm text-gray-300"
-            >
+            <label htmlFor="email" className="text-sm text-gray-300">
               E-mail
             </label>
 
@@ -80,10 +99,7 @@ function Contact() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label
-            htmlFor="subject"
-            className="text-sm text-gray-300"
-          >
+          <label htmlFor="subject" className="text-sm text-gray-300">
             Assunto
           </label>
 
@@ -105,10 +121,7 @@ function Contact() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label
-            htmlFor="message"
-            className="text-sm text-gray-300"
-          >
+          <label htmlFor="message" className="text-sm text-gray-300">
             Mensagem
           </label>
 
@@ -131,18 +144,28 @@ function Contact() {
 
         <button
           type="submit"
+          disabled={status === "sending"}
           className="
             w-fit rounded-md bg-cyan-400
             px-6 py-3 text-sm font-medium text-black
-            transition-colors hover:bg-cyan-300
+            transition-colors
+            hover:bg-cyan-300
+            disabled:cursor-not-allowed
+            disabled:opacity-50
           "
         >
-          Enviar mensagem
+          {status === "sending" ? "Enviando..." : "Enviar mensagem"}
         </button>
 
-        {submitted && (
+        {status === "success" && (
           <p className="font-mono text-sm text-cyan-400">
-            Mensagem preparada com sucesso.
+            Mensagem enviada com sucesso.
+          </p>
+        )}
+
+        {status === "error" && (
+          <p className="font-mono text-sm text-red-400">
+            Não foi possível enviar a mensagem. Tente novamente.
           </p>
         )}
       </form>
