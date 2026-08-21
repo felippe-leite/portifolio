@@ -20,7 +20,7 @@ export const experiences: Experience[] = [
     company: "Exército Brasileiro",
     period: "Mar 2022 - Fev 2023",
     description:
-      "Atuei com **Suporte de TI**, prestando atendimento a usuários, manutenção de computadores e periféricos, configuração de Windows e Linux, suporte a redes locais e controle de inventário de equipamentos.",
+      "Atuei com Suporte de TI, prestando atendimento a usuários, manutenção de computadores e periféricos, configuração de Windows e Linux, suporte a redes locais e controle de inventário de equipamentos.",
     technologies: ["Linxu", "Redes TCP/IP", "Diagnóstico de Sistemas"],
   },
 ];
