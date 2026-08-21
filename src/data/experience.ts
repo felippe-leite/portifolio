@@ -20,7 +20,7 @@ export const experiences: Experience[] = [
     company: "Exército Brasileiro",
     period: "Mar 2022 - Fev 2023",
     description:
-      "Atuei na área de Suporte de TI no Exército Brasileiro, prestando atendimento técnico a usuários, realizando manutenção preventiva e corretiva de computadores, impressoras e periféricos, além da instalação e configuração de sistemas operacionais Windows e Linux. Também ofereci suporte à infraestrutura de redes locais (LAN) e colaborei no controle e organização do inventário de equipamentos. Utilizei ferramentas como Windows, Linux, pacote Microsoft Office, redes TCP/IP e aplicativos de diagnóstico de hardware e software..",
+      "Atuei com **Suporte de TI**, prestando atendimento a usuários, manutenção de computadores e periféricos, configuração de Windows e Linux, suporte a redes locais e controle de inventário de equipamentos.",
     technologies: ["Linxu", "Redes TCP/IP", "Diagnóstico de Sistemas"],
   },
 ];
