@@ -47,10 +47,11 @@ function Hero({ name, description, github, linkedin, resume }: HeroProps) {
 
           <a
             href={resume}
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-md bg-cyan-400 px-5 py-2.5 text-sm font-medium text-black transition-colors hover:bg-cyan-300"
           >
-            Baixar CV
+            Ver CV
           </a>
         </div>
       </div>
