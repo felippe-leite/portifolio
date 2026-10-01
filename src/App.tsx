@@ -38,7 +38,7 @@ function App() {
             description="hero.description"
             github="https://github.com/felippe-leite"
             linkedin="https://www.linkedin.com/in/felippeleite27/"
-            resume="/cv.pdf"
+            resume="/curriculo.pdf"
           />
 
           <About />
