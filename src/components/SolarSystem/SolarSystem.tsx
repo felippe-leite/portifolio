@@ -116,7 +116,7 @@ function SolarSystem() {
 
             {planet.ring && (
               <div
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-amber-100/40"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 solar-ring rounded-[50%] border"
                 style={{ width: planet.size * 2.3, height: planet.size * 0.8, rotate: "-20deg" }}
               />
             )}
@@ -127,7 +127,7 @@ function SolarSystem() {
                 className="solar-orbit absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                 style={orbitStyle(moon.radius, moon.period)}
               >
-                <div className="absolute left-1/2 top-0 h-[1.5px] w-[1.5px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/60" />
+                <div className="absolute left-1/2 top-0 h-[1.5px] w-[1.5px] -translate-x-1/2 -translate-y-1/2 solar-moon rounded-full" />
               </div>
             ))}
           </div>

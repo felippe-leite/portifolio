@@ -83,8 +83,10 @@
 }
 
 :root[data-theme="light"] .astronomy-background {
-  opacity: 0.2;
-  filter: invert(1);
+  /* O hue-rotate desfaz a troca de matiz do invert: estrelas azuis continuam
+     azuis e as alaranjadas, alaranjadas, só que escuras sobre o fundo claro.
+     O reforço de brilho para esse caso fica em AstronomyBackground.tsx. */
+  filter: invert(1) hue-rotate(180deg);
 }
 
 @keyframes fadeIn {
@@ -137,6 +139,29 @@ html {
     var(--planet-lit) 0%,
     var(--planet-dark) 80%
   );
+}
+
+.solar-moon {
+  background: rgb(255 255 255 / 0.6);
+}
+
+.solar-ring {
+  border-color: rgb(254 243 199 / 0.4);
+}
+
+/* No tema claro os tons claros dos planetas somem no painel: um contorno fino
+   e mais saturação devolvem o volume; luas e anel ganham tons escuros. */
+:root[data-theme="light"] .solar-planet {
+  filter: saturate(1.4) contrast(1.15);
+  box-shadow: 0 0 0 0.5px rgb(15 23 42 / 0.45);
+}
+
+:root[data-theme="light"] .solar-moon {
+  background: rgb(51 65 85 / 0.7);
+}
+
+:root[data-theme="light"] .solar-ring {
+  border-color: rgb(146 64 14 / 0.55);
 }
 
 @media (prefers-reduced-motion: reduce) {

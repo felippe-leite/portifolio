@@ -33,6 +33,12 @@ const TWINKLE_MAGNITUDE = 1; // estrelas mais brilhantes que isso cintilam
 const MILKY_WAY_RESOLUTION = 0.25; // a Via Láctea é difusa: desenhada em 1/4 da resolução
 const MILKY_WAY_BOOST = 8;
 
+// No tema claro o céu é invertido pelo CSS; estrela escura em fundo claro
+// pede mais opacidade e um pouco mais de tamanho para ter o mesmo destaque
+const LIGHT_THEME_STAR_ALPHA = 1.8;
+const LIGHT_THEME_STAR_RADIUS = 1.2;
+const isLightTheme = () => document.documentElement.dataset.theme === "light";
+
 /*
   Nebulosas escuras: nuvens de poeira que bloqueiam a luz da Via Láctea.
   Raio em graus; `strength` é quanto do brilho some no centro da nuvem.
@@ -257,6 +263,10 @@ function createSkyRenderer(canvas: HTMLCanvasElement, sky: SkyData) {
     }
     glowCtx.globalCompositeOperation = "source-over";
 
+    const light = isLightTheme();
+    const alphaBoost = light ? LIGHT_THEME_STAR_ALPHA : 1;
+    const radiusBoost = light ? LIGHT_THEME_STAR_RADIUS : 1;
+
     ctx.globalAlpha = 1 / MILKY_WAY_BOOST;
     ctx.drawImage(milkyWay, 0, 0, width, height);
     ctx.globalAlpha = 1;
@@ -282,7 +292,8 @@ function createSkyRenderer(canvas: HTMLCanvasElement, sky: SkyData) {
       const point = project(star.ra - shift, star.dec);
       if (!point || !isVisible(point, 10)) continue;
 
-      let { radius, alpha } = star;
+      let radius = star.radius * radiusBoost;
+      let alpha = Math.min(1, star.alpha * alphaBoost);
 
       if (star.twinkle) {
         const wave = Math.sin(time * 1.4 + star.phase);
@@ -401,7 +412,14 @@ function AstronomyBackground() {
     };
     window.addEventListener("resize", onResize);
 
+    // Sem animação o céu só é desenhado uma vez: redesenha ao trocar o tema
+    const themeObserver = new MutationObserver(() => {
+      if (reduceMotion) renderFrame?.(0, 0);
+    });
+    themeObserver.observe(document.documentElement, { attributeFilter: ["data-theme"] });
+
     return () => {
+      themeObserver.disconnect();
       cancelled = true;
       cancelAnimationFrame(animationFrame);
       window.clearTimeout(resizeTimeout);
