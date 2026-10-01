@@ -2,6 +2,21 @@ import { useEffect, useRef } from "react";
 import { useLanguage } from "../../i18n/useLanguage";
 
 const DURATION = 3000;
+const STAR_COUNT = 90;
+
+// Deterministic pseudo-random in [0, 1), so stars scatter evenly without lining up.
+const hash = (n: number) => {
+  const value = Math.sin(n * 12.9898) * 43758.5453;
+  return value - Math.floor(value);
+};
+
+const STARS = Array.from({ length: STAR_COUNT }, (_, i) => ({
+  x: hash(i + 1),
+  y: hash(i + 101),
+  size: i % 3 === 0 ? 2 : 1,
+  alpha: 0.12 + (i % 4) * 0.08,
+}));
+
 export default function BlackHoleIntro({ onComplete }: { onComplete: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -22,6 +37,10 @@ export default function BlackHoleIntro({ onComplete }: { onComplete: () => void 
       if (motionPreference.matches) onComplete();
     };
     motionPreference.addEventListener("change", handleMotionChange);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onComplete();
+    };
+    window.addEventListener("keydown", handleKeyDown);
 
     let width = 0;
     let height = 0;
@@ -49,11 +68,9 @@ export default function BlackHoleIntro({ onComplete }: { onComplete: () => void 
       ctx.translate(width / 2, height * 0.46);
 
       // A deterministic star field keeps the scene stable between frames.
-      for (let i = 0; i < 90; i++) {
-        const x = ((i * 137.508) % width) - width / 2;
-        const y = ((i * 97.317) % height) - height * 0.46;
-        ctx.fillStyle = `rgba(190, 215, 240, ${0.12 + (i % 4) * 0.08})`;
-        ctx.fillRect(x, y, i % 3 === 0 ? 2 : 1, 1);
+      for (const star of STARS) {
+        ctx.fillStyle = `rgba(190, 215, 240, ${star.alpha})`;
+        ctx.fillRect(star.x * width - width / 2, star.y * height - height * 0.46, star.size, 1);
       }
 
       if (burst === 0) {
@@ -126,6 +143,7 @@ export default function BlackHoleIntro({ onComplete }: { onComplete: () => void 
       window.clearTimeout(timeout);
       window.removeEventListener("resize", resize);
       motionPreference.removeEventListener("change", handleMotionChange);
+      window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = previousOverflow;
     };
   }, [onComplete]);

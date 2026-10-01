@@ -10,23 +10,33 @@ import Certificates from "./components/Certificates/Certificates";
 import Exploring from "./components/Exploring/Exploring";
 import Footer from "./components/Footer/Footer";
 import AstronomyBackground from "./components/AstronomyBackground/AstronomyBackground";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import BlackHoleIntro from "./components/BlackHoleIntro/BlackHoleIntro";
 import { rememberIntro, shouldShowIntro } from "./components/BlackHoleIntro/introSession";
 
 function App() {
   const [showIntro, setShowIntro] = useState(shouldShowIntro);
+  const mainRef = useRef<HTMLElement>(null);
+  const introWasShown = useRef(showIntro);
   const finishIntro = useCallback(() => {
     rememberIntro();
     setShowIntro(false);
   }, []);
+
+  // The skip button disappears with the intro, so hand focus to the page content.
+  useEffect(() => {
+    if (!showIntro && introWasShown.current) {
+      introWasShown.current = false;
+      mainRef.current?.focus({ preventScroll: true });
+    }
+  }, [showIntro]);
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-page p-4 text-foreground md:p-8">
       {showIntro && <BlackHoleIntro onComplete={finishIntro} />}
       <AstronomyBackground />
 
-      <main className="relative z-10" inert={showIntro} aria-hidden={showIntro || undefined}>
+      <main ref={mainRef} tabIndex={-1} className="relative z-10 outline-none" inert={showIntro}>
         <div
           className="
             mx-auto
