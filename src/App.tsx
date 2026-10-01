@@ -6,6 +6,7 @@ import Technologies from "./components/Technologies/Technologies";
 import Contact from "./components/Contact/Contact";
 import Experience from "./components/Experience/Experience";
 import Education from "./components/Education/Education";
+import Certificates from "./components/Certificates/Certificates";
 import Exploring from "./components/Exploring/Exploring";
 import Footer from "./components/Footer/Footer";
 import AstronomyBackground from "./components/AstronomyBackground/AstronomyBackground";
@@ -24,7 +25,7 @@ function App() {
             rounded-lg
             border
             border-white/20
-            bg-[#0d0d0d]
+            bg-[#0d0d0d]/85
             px-4
             py-8
             md:px-8
@@ -34,7 +35,7 @@ function App() {
 
           <Hero
             name="Felippe Leite"
-            description="Construindo aplicações robustas, escaláveis e eficientes com Java, Spring Boot e boas práticas de engenharia de software."
+            description="hero.description"
             github="https://github.com/felippe-leite"
             linkedin="https://www.linkedin.com/in/felippeleite27/"
             resume="/cv.pdf"
@@ -44,9 +45,11 @@ function App() {
 
           <Experience />
 
+          <Projects />
+
           <Education />
 
-          <Projects />
+          <Certificates />
 
           <Technologies />
 

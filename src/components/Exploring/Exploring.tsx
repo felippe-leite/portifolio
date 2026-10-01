@@ -1,20 +1,19 @@
+import { useLanguage } from "../../i18n/useLanguage";
 const topics = [
   "Arquitetura de Software",
-  "Cyber Security",
+  "exploring.security",
   "Sistemas Distribuídos",
+  "exploring.pentest",
 ];
 
 function Exploring() {
+  const { t } = useLanguage();
   return (
     <section id="exploring" className="flex flex-col gap-8">
       <div>
-        <p className="font-mono text-sm uppercase tracking-[0.2em] text-cyan-400">
-          // Atualmente explorando
-        </p>
+        <p className="font-mono text-sm uppercase tracking-[0.2em] text-cyan-400">{t("// Atualmente explorando")}</p>
 
-        <h2 className="mt-2 text-3xl font-bold">
-          Explorando novos conhecimentos
-        </h2>
+        <h2 className="mt-2 text-3xl font-bold">{t("Explorando novos conhecimentos")}</h2>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
@@ -40,11 +39,12 @@ function Exploring() {
                 group-hover:text-cyan-400
               "
             >
-              {topic}
+              {t(topic)}
             </span>
           </div>
         ))}
       </div>
+
     </section>
   );
 }

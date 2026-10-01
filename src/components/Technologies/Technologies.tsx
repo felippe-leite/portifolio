@@ -1,11 +1,15 @@
+import { useLanguage } from "../../i18n/useLanguage";
 import {
   SiDocker,
+  SiNodedotjs,
+  SiSupabase,
+  SiMysql,
   SiPostgresql,
   SiReact,
   SiSpringboot,
   SiTypescript,
 } from "react-icons/si";
-import { FaJava } from "react-icons/fa";
+import { FaJava, FaLinux, FaServer, FaShieldAlt, FaKey } from "react-icons/fa";
 
 interface Technology {
   name: string;
@@ -21,6 +25,7 @@ const technologyGroups: TechnologyGroup[] = [
   {
     name: "Backend",
     technologies: [
+      { name: "Node.js", icon: SiNodedotjs },
       {
         name: "Java",
         icon: FaJava,
@@ -47,6 +52,8 @@ const technologyGroups: TechnologyGroup[] = [
   {
     name: "Database",
     technologies: [
+      { name: "Supabase", icon: SiSupabase },
+      { name: "MySQL", icon: SiMysql },
       {
         name: "PostgreSQL",
         icon: SiPostgresql,
@@ -54,32 +61,40 @@ const technologyGroups: TechnologyGroup[] = [
     ],
   },
   {
-    name: "DevOps",
+    name: "stack.infrastructure",
     technologies: [
       {
         name: "Docker",
         icon: SiDocker,
       },
+      { name: "Linux", icon: FaLinux },
+      { name: "EasyPanel", icon: FaServer },
+    ],
+  },
+  {
+    name: "stack.security",
+    technologies: [
+      { name: "RLS", icon: FaShieldAlt },
+      { name: "stack.policies", icon: FaKey },
     ],
   },
 ];
 
 function Technologies() {
+  const { t } = useLanguage();
   return (
     <section id="technologies" className="flex flex-col gap-8">
       <div>
-        <p className="mb-2 font-mono text-sm uppercase tracking-[0.2em] text-cyan-400">
-          // Stack
-        </p>
+        <p className="mb-2 font-mono text-sm uppercase tracking-[0.2em] text-cyan-400">{t("// Stack")}</p>
 
-        <h2 className="text-2xl font-bold">Tecnologias</h2>
+        <h2 className="text-2xl font-bold">{t("Tecnologias")}</h2>
       </div>
 
       <div className="flex flex-col gap-8">
         {technologyGroups.map((group) => (
           <div key={group.name} className="flex flex-col gap-3">
             <h3 className="font-mono text-sm uppercase tracking-[0.15em] text-gray-500">
-              {group.name}
+              {t(group.name)}
             </h3>
 
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
@@ -113,7 +128,7 @@ function Technologies() {
                     />
 
                     <span className="font-mono text-sm text-gray-400 transition-colors group-hover:text-white">
-                      {technology.name}
+                      {t(technology.name)}
                     </span>
                   </div>
                 );

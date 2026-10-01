@@ -1,4 +1,6 @@
+import { useLanguage } from "../../i18n/useLanguage";
 function Footer() {
+  const { t } = useLanguage();
   const year = new Date().getFullYear();
 
   return (
@@ -7,9 +9,7 @@ function Footer() {
         <div>
           <p className="font-semibold">Felippe Leite</p>
 
-          <p className="mt-1 font-mono text-xs text-gray-500">
-            Backend Developer • Java • Spring Boot • TypeScript
-          </p>
+          <p className="mt-1 font-mono text-xs text-gray-500">{t("footer.profile")}</p>
         </div>
 
         <div className="flex gap-5 text-sm text-gray-400">
@@ -34,9 +34,9 @@ function Footer() {
       </div>
 
       <div className="mt-8 flex flex-col gap-2 border-t border-white/5 pt-5 text-xs text-gray-600 md:flex-row md:items-center md:justify-between">
-        <p>© {year} Felippe Leite. Todos os direitos reservados.</p>
+        <p>© {year} Felippe Leite. {t("Todos os direitos reservados.")}</p>
 
-        <p className="font-mono">Built with React + TypeScript</p>
+        <p className="font-mono">{t("Built with React + TypeScript")}</p>
       </div>
     </footer>
   );

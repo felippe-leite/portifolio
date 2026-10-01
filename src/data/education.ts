@@ -1,16 +1,20 @@
 export interface Education {
   course: string;
   institution: string;
-  period: string;
+  period?: string;
   description?: string;
 }
 
 export const education: Education[] = [
   {
-    course: "Software Engineer",
-    institution: "Em construção...",
-    period: "2025 — Atual",
+    course: "education.degree.title",
+    institution: "UNICEPLAC → Universidade Cesumar",
     description:
-      "Formação voltada ao desenvolvimento de software, programação, banco de dados e engenharia de sistemas.",
+      "education.degree.description",
+  },
+  {
+    course: "education.technical.title",
+    institution: "CETEP",
+    description: "education.technical.description",
   },
 ];

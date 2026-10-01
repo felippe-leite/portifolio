@@ -72,7 +72,7 @@ portifolio/
 
 ### Pré-requisitos
 
-- Node.js
+- Node.js 22.13 ou superior na linha 22, ou Node.js 24+
 - npm
 
 ### Instalação

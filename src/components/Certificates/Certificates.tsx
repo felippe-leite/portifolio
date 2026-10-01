@@ -1,14 +1,16 @@
+import { useLanguage } from "../../i18n/useLanguage";
 import { certificates } from "../../data/certificates";
 
 function Certificates() {
+  const { t } = useLanguage();
+  if (certificates.length === 0) return null;
+
   return (
     <section id="certificates" className="flex flex-col gap-8">
       <div>
-        <p className="font-mono text-sm uppercase tracking-[0.2em] text-cyan-400">
-          // Certificados
-        </p>
+        <p className="font-mono text-sm uppercase tracking-[0.2em] text-cyan-400">{t("// Certificados")}</p>
 
-        <h2 className="mt-2 text-3xl font-bold">Certificações e cursos</h2>
+        <h2 className="mt-2 text-3xl font-bold">{t("Certificações e cursos")}</h2>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
@@ -37,9 +39,7 @@ function Certificates() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-fit text-sm font-medium underline underline-offset-4 transition-colors hover:text-cyan-400"
-              >
-                Ver certificado
-              </a>
+              >{t("Ver certificado")}</a>
             )}
           </article>
         ))}
