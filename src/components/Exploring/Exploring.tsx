@@ -11,7 +11,7 @@ function Exploring() {
   return (
     <section id="exploring" className="flex flex-col gap-8">
       <div>
-        <p className="font-mono text-sm uppercase tracking-[0.2em] text-cyan-400">{t("// Atualmente explorando")}</p>
+        <p className="font-mono text-sm uppercase tracking-[0.2em] text-accent">{t("// Atualmente explorando")}</p>
 
         <h2 className="mt-2 text-3xl font-bold">{t("Explorando novos conhecimentos")}</h2>
       </div>
@@ -23,20 +23,20 @@ function Exploring() {
             className="
               group
               rounded-lg
-              border border-white/10
-              bg-white/[0.02]
+              border border-line/10
+              bg-card
               px-5 py-4
               transition-all duration-300
               hover:-translate-y-1
-              hover:border-cyan-400/40
-              hover:bg-white/[0.04]
+              hover:border-accent/40
+              hover:bg-card-hover
             "
           >
             <span
               className="
-                font-mono text-sm text-gray-400
+                font-mono text-sm text-muted
                 transition-colors duration-300
-                group-hover:text-cyan-400
+                group-hover:text-accent
               "
             >
               {t(topic)}

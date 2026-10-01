@@ -83,14 +83,14 @@ function SolarSystem() {
       {planets.map((planet) => (
         <div
           key={`${planet.name}-ring`}
-          className="absolute rounded-full border border-cyan-400/10"
+          className="absolute rounded-full border border-accent/10"
           style={{ width: planet.radius * 2, height: planet.radius * 2 }}
         />
       ))}
 
       {/* Cinturão de asteroides */}
       <div
-        className="solar-orbit absolute rounded-full border border-dashed border-white/10"
+        className="solar-orbit absolute rounded-full border border-dashed border-line/10"
         style={orbitStyle(ASTEROID_BELT_RADIUS, ASTEROID_BELT_PERIOD)}
       />
 

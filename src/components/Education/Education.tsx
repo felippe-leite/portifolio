@@ -8,7 +8,7 @@ function Education() {
   return (
     <section id="education" className="flex flex-col gap-8">
       <div>
-        <p className="font-mono text-sm uppercase tracking-[0.2em] text-cyan-400">{t("// Educação")}</p>
+        <p className="font-mono text-sm uppercase tracking-[0.2em] text-accent">{t("// Educação")}</p>
 
         <h2 className="mt-2 text-3xl font-bold">{t("Formação acadêmica")}</h2>
       </div>
@@ -17,26 +17,26 @@ function Education() {
         {education.map((item) => (
           <article
             key={`${item.institution}-${item.course}`}
-            className="rounded-lg border border-white/10 bg-white/[0.02] p-6"
+            className="rounded-lg border border-line/10 bg-card p-6"
           >
             <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
               <div>
                 <h3 className="text-xl font-semibold">{t(item.course)}</h3>
 
-                <p className="font-mono text-sm text-cyan-400">
+                <p className="font-mono text-sm text-accent">
                   {item.institution}
                 </p>
               </div>
 
               {item.period && (
-                <span className="font-mono text-sm text-gray-500">
+                <span className="font-mono text-sm text-subtle">
                   {t(item.period)}
                 </span>
               )}
             </div>
 
             {item.description && (
-              <p className="mt-4 max-w-3xl leading-relaxed text-gray-400">
+              <p className="mt-4 max-w-3xl leading-relaxed text-muted">
                 {t(item.description)}
               </p>
             )}

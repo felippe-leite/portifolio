@@ -85,7 +85,7 @@ function Technologies() {
   return (
     <section id="technologies" className="flex flex-col gap-8">
       <div>
-        <p className="mb-2 font-mono text-sm uppercase tracking-[0.2em] text-cyan-400">{t("// Stack")}</p>
+        <p className="mb-2 font-mono text-sm uppercase tracking-[0.2em] text-accent">{t("// Stack")}</p>
 
         <h2 className="text-2xl font-bold">{t("Tecnologias")}</h2>
       </div>
@@ -93,7 +93,7 @@ function Technologies() {
       <div className="flex flex-col gap-8">
         {technologyGroups.map((group) => (
           <div key={group.name} className="flex flex-col gap-3">
-            <h3 className="font-mono text-sm uppercase tracking-[0.15em] text-gray-500">
+            <h3 className="font-mono text-sm uppercase tracking-[0.15em] text-subtle">
               {t(group.name)}
             </h3>
 
@@ -108,26 +108,26 @@ function Technologies() {
                       group
                       flex items-center gap-3
                       rounded-lg
-                      border border-white/10
-                      bg-white/[0.02]
+                      border border-line/10
+                      bg-card
                       px-4 py-4
                       transition-all duration-300
                       hover:-translate-y-1
-                      hover:border-cyan-400/40
-                      hover:bg-white/[0.04]
+                      hover:border-accent/40
+                      hover:bg-card-hover
                     "
                   >
                     <Icon
                       className="
                         text-2xl
-                        text-gray-400
+                        text-muted
                         transition-colors
                         duration-300
-                        group-hover:text-cyan-400
+                        group-hover:text-accent
                       "
                     />
 
-                    <span className="font-mono text-sm text-gray-400 transition-colors group-hover:text-white">
+                    <span className="font-mono text-sm text-muted transition-colors group-hover:text-foreground">
                       {t(technology.name)}
                     </span>
                   </div>

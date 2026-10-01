@@ -1,11 +1,41 @@
 import { useLanguage } from "../../i18n/useLanguage";
 import { useState } from "react";
+import type { MouseEvent } from "react";
+import { FiMoon, FiSun } from "react-icons/fi";
 import { certificates } from "../../data/certificates";
 import { education } from "../../data/education";
 
 function Navbar() {
   const { t, language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState(() =>
+    document.documentElement.dataset.theme === "light" ? "light" : "dark",
+  );
+
+  function toggleTheme() {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+    setTheme(nextTheme);
+    try {
+      localStorage.setItem("portfolio-theme", nextTheme);
+    } catch {
+      // The theme still works when browser storage is unavailable.
+    }
+  }
+
+  function handleNavigation(event: MouseEvent<HTMLAnchorElement>, href: string) {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    event.preventDefault();
+    setIsOpen(false);
+
+    if (href === "#") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" });
+  }
 
   const links = [
     { label: "Sobre", href: "#about" },
@@ -23,23 +53,24 @@ function Navbar() {
   ];
 
   return (
-    <nav className="border-b border-white/10 pb-6">
-      <div className="flex items-center justify-between gap-4">
+    <nav className="border-b border-line/10 pb-6">
+      <div className="flex items-center justify-between gap-2 sm:gap-4">
         <a
           href="#"
-          className="text-sm font-semibold tracking-wide"
-          onClick={() => setIsOpen(false)}
+          className="font-display text-sm font-semibold tracking-tight"
+          onClick={(event) => handleNavigation(event, "#")}
         >
           Felippe Leite
         </a>
 
         {/* Desktop */}
-        <ul className="hidden items-center gap-3 text-sm text-gray-400 lg:flex xl:gap-5">
+        <ul className="hidden items-center gap-3 text-sm text-muted xl:flex xl:gap-5">
           {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="transition-colors hover:text-cyan-400"
+                onClick={(event) => handleNavigation(event, link.href)}
+                className="transition-colors hover:text-accent"
               >
                 {t(link.label)}
               </a>
@@ -47,11 +78,20 @@ function Navbar() {
           ))}
         </ul>
 
-        <div className="flex shrink-0 items-center gap-4">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-4">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label={t(theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro")}
+            title={t(theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro")}
+            className="rounded-md border border-line/15 p-2 text-muted transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-accent"
+          >
+            {theme === "dark" ? <FiSun aria-hidden="true" size={18} /> : <FiMoon aria-hidden="true" size={18} />}
+          </button>
           <div
             role="group"
             aria-label={t("Idioma")}
-            className="flex rounded-md border border-white/15 p-1 font-mono text-xs"
+            className="flex rounded-md border border-line/15 p-1 font-mono text-xs"
           >
             {(["pt", "en"] as const).map((option) => (
               <button
@@ -61,10 +101,10 @@ function Navbar() {
                 aria-pressed={language === option}
                 aria-label={option === "pt" ? "Português" : "English"}
                 lang={option === "pt" ? "pt-BR" : "en"}
-                className={`rounded px-2 py-1.5 transition-colors focus-visible:outline-2 focus-visible:outline-cyan-400 ${
+                className={`rounded px-2 py-1.5 transition-colors focus-visible:outline-2 focus-visible:outline-accent ${
                   language === option
-                    ? "bg-cyan-400 text-black"
-                    : "text-gray-400 hover:text-cyan-400"
+                    ? "bg-action text-on-action"
+                    : "text-muted hover:text-accent"
                 }`}
               >
                 {option === "pt" ? "PT" : "ENG"}
@@ -76,7 +116,7 @@ function Navbar() {
           <button
             type="button"
             onClick={() => setIsOpen((current) => !current)}
-            className="text-gray-400 transition-colors hover:text-cyan-400 lg:hidden"
+            className="text-muted transition-colors hover:text-accent xl:hidden"
             aria-label={t(isOpen ? "Fechar menu" : "Abrir menu")}
             aria-expanded={isOpen}
           >
@@ -87,13 +127,13 @@ function Navbar() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <ul className="mt-6 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-gray-400 lg:hidden">
+        <ul className="mt-6 flex flex-col gap-4 border-t border-line/10 pt-6 text-sm text-muted xl:hidden">
           {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="block transition-colors hover:text-cyan-400"
+                onClick={(event) => handleNavigation(event, link.href)}
+                className="block transition-colors hover:text-accent"
               >
                 {t(link.label)}
               </a>

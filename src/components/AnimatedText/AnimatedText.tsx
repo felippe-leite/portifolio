@@ -23,7 +23,7 @@ function AnimatedText() {
     <div className="min-h-[1.5rem]">
       <span
         key={t(texts[index])}
-        className="inline-block font-mono text-sm tracking-[0.2em] text-cyan-400 animate-[fadeIn_1s_ease-in-out]"
+        className="inline-block font-mono text-sm tracking-[0.2em] text-accent animate-[fadeIn_1s_ease-in-out]"
       >
         {t(texts[index])}
       </span>

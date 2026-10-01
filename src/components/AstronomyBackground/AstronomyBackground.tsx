@@ -410,7 +410,7 @@ function AstronomyBackground() {
   }, []);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+    <div className="astronomy-background pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
       <ShootingStar />
     </div>
